@@ -54,9 +54,9 @@ export function WeatherHeader() {
                             >
                                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                                 <Avatar className="h-8 w-8">
-                                    <AvatarImage  />
+                                    <AvatarImage src={localStorage.getItem("username")}/>
                                     <AvatarFallback className="bg-white/20 text-white text-sm">
-                                        H
+                                        {localStorage.getItem("username").charAt(0).toUpperCase()}
                                     </AvatarFallback>
                                 </Avatar>
                             </div>

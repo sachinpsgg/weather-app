@@ -34,15 +34,15 @@ export default function Login() {
         setLoading(true)
         const loadingToast = toast.loading("Signing in...");
 
-        const { error } = await supabase.auth.signInWithPassword({
+        const { error,data } = await supabase.auth.signInWithPassword({
             email: formData.email,
             password: formData.password,
         });
-
         if (error) {
-            toast.error("Login failed!", { id: loadingToast });
+            toast.error("Incorrect email or password", { id: loadingToast });
             setLoading(false)
         } else {
+            localStorage.setItem("username",data.user.user_metadata.full_name);
             toast.success("Welcome back!", { id: loadingToast });
             setLoading(false)
             navigate('/dashboard');
@@ -131,7 +131,7 @@ export default function Login() {
                 <CardFooter className="text-center">
                     <p className="text-sm text-blue-200">
                         Don't have an account?{' '}
-                        <button className="text-blue-300 hover:text-white font-semibold transition-colors">
+                        <button className="text-blue-300 hover:text-white font-semibold transition-colors" onClick={()=> navigate('/signup')}>
                             Sign up
                         </button>
                     </p>

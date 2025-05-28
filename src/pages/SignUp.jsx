@@ -1,118 +1,3 @@
-// import React, { useState } from 'react';
-// import {supabase} from "../lib/supabaseClient.js";
-// import {useNavigate} from "react-router-dom";
-//
-//
-// const SignUp = () => {
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
-//     const [confirmPassword, setConfirmPassword] = useState('');
-//     const [error, setError] = useState('');
-//     const [message, setMessage] = useState('');
-//     const navigate = useNavigate();
-//
-//     const handleSignUp = async (e) => {
-//         e.preventDefault();
-//         setError('');
-//         setMessage('');
-//
-//         if (password !== confirmPassword) {
-//             setError('Passwords do not match.');
-//             return;
-//         }
-//
-//         const { data, error } = await supabase.auth.signUp({
-//             email,
-//             password
-//         });
-//         console.log(data);
-//         if (error) {
-//             setError(error.message);
-//         } else {
-//             navigate('/login')
-//         }
-//     };
-//
-//     return (
-//         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-//             <form onSubmit={handleSignUp} className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-//                 <h2 className="text-xl font-bold mb-4">Login</h2>
-//                     <div className="p-6 space-y-4 sm:p-8">
-//                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-//                             Create an account
-//                         </h1>
-//
-//                         <div>
-//                             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">Email
-//                                 address</label>
-//                             <div className="mt-2">
-//                                 <input type="email" name="email" id="email" autoComplete="email" required
-//                                        onChange={((e)=> setEmail(e.target.value))}
-//                                        value={email}
-//                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
-//                             </div>
-//                         </div>
-//
-//                         <div>
-//                             <div className="flex items-center justify-between">
-//                                 <label htmlFor="password"
-//                                        className="block text-sm/6 font-medium text-gray-900">Password</label>
-//                             </div>
-//                             <div className="mt-2">
-//                                 <input name="password" id="password" autoComplete="current-password"
-//                                        required
-//                                        type="password"
-//                                        onChange={(e)=> setPassword(e.target.value)}
-//                                        value={password}
-//                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
-//                             </div>
-//                         </div>
-//                         <div>
-//                             <div className="flex items-center justify-between">
-//                                 <label htmlFor="password"
-//                                        className="block text-sm/6 font-medium text-gray-900">Password</label>
-//                             </div>
-//                             <div className="mt-2">
-//                                 <input name="password" id="password" autoComplete="current-password"
-//                                        required
-//                                        type="password"
-//                                        onChange={(e)=> setConfirmPassword(e.target.value)}
-//                                        value={confirmPassword}
-//                                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"/>
-//                             </div>
-//                         </div>
-//
-//                         <div className="flex items-start">
-//                             <div className="flex items-center h-5">
-//                                 <input id="terms" type="checkbox" required className="w-4 h-4 border border-gray-300 rounded bg-gray-50 dark:bg-gray-700" />
-//                             </div>
-//                             <div className="ml-3 text-sm">
-//                                 <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">
-//                                     I accept the <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a>
-//                                 </label>
-//                             </div>
-//                         </div>
-//
-//                         <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-//                             Create an account
-//                         </button>
-//
-//                         {error && <p className="text-red-500 text-sm">{error}</p>}
-//                         {message && <p className="text-green-500 text-sm">{message}</p>}
-//
-//                         <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-//                             Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</a>
-//                         </p>
-//                     </div>
-//                 </form>
-//             {/*</div>*/}
-//         </div>
-//     );
-// };
-//
-// export default SignUp;
-
-
 import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Check } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -126,7 +11,6 @@ import {
     CardHeader,
     CardTitle,
 } from '../components/ui/card';
-import { Separator } from '../components/ui/separator';
 import { Checkbox } from '../components/ui/checkbox';
 import {supabase} from "../lib/supabaseClient.js";
 import {toast} from "sonner";
@@ -211,7 +95,6 @@ export default function SignUp() {
 
                 <CardContent className="space-y-6">
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        {/* Name */}
                         <div className="space-y-2">
                             <Label htmlFor="name" className="text-white font-medium">
                                 Full Name
@@ -231,7 +114,6 @@ export default function SignUp() {
                             </div>
                         </div>
 
-                        {/* Email */}
                         <div className="space-y-2">
                             <Label htmlFor="email" className="text-white font-medium">
                                 Email
@@ -250,8 +132,6 @@ export default function SignUp() {
                                 />
                             </div>
                         </div>
-
-                        {/* Password */}
                         <div className="space-y-2">
                             <Label htmlFor="password" className="text-white font-medium">
                                 Password
@@ -293,8 +173,6 @@ export default function SignUp() {
                                 </div>
                             )}
                         </div>
-
-                        {/* Confirm Password */}
                         <div className="space-y-2">
                             <Label htmlFor="confirmPassword" className="text-white font-medium">
                                 Confirm Password
@@ -344,7 +222,6 @@ export default function SignUp() {
                             )}
                         </div>
 
-                        {/* Terms Checkbox */}
                         <div className="flex items-start space-x-3">
                             <Checkbox
                                 id="agreeToTerms"
@@ -386,7 +263,7 @@ export default function SignUp() {
                 <CardFooter className="text-center">
                     <p className="text-sm text-blue-200">
                         Already have an account?{' '}
-                        <button className="text-blue-300 hover:text-white font-semibold transition-colors">
+                        <button className="text-blue-300 hover:text-white font-semibold transition-colors" onClick={()=> navigate('/login')}>
                             Sign in
                         </button>
                     </p>
