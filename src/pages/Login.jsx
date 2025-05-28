@@ -12,9 +12,9 @@ import {
 import {supabase} from "../lib/supabaseClient.js";
 import {useNavigate} from "react-router-dom";
 import {toast} from "sonner";
-import {Label} from "recharts";
 import {Input} from "../components/ui/Input.jsx";
 import {Button} from "../components/ui/Button.jsx";
+import {Label} from "../components/ui/Label.jsx";
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);

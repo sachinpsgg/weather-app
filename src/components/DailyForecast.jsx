@@ -1,3 +1,5 @@
+import {useWeather} from "../context/WeatherContext.jsx";
+
 const formatDate = (dateStr) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', {
@@ -7,17 +9,17 @@ const formatDate = (dateStr) => {
     });
 };
 
-export default function DailyForecast({ forecast }) {
+export default function DailyForecast() {
+    const { weather} = useWeather();
     return (
         <div className=" p-4 bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-900 border-0 mt-2 rounded-sm">
             <div className="space-y-4">
-                {forecast.map((day) => (
+                {weather.forecast.forecastday.map((day) => (
                     <div
                         key={day.date}
                         className="flex items-center justify-between p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/15 transition-colors"
                     >
                         <div className="flex items-center gap-3">
-                            {/*{getWeatherIcon(day.day.condition.text)}*/}
                             <img src={`https:${day.day.condition.icon}`} alt="icon"/>
                             <div>
                                 <div className="text-white font-medium">

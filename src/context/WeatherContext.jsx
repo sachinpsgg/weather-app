@@ -1,48 +1,9 @@
-// import React, { createContext, useContext, useEffect, useState } from 'react';
-// import { fetchWeather } from '../api/fetchWeather';
-//
-// const WeatherContext = createContext();
-//
-// export const WeatherProvider = ({ children }) => {
-//     const [city, setCity] = useState(() => {
-//         return localStorage.getItem('lastCity') || 'New Delhi';
-//     });
-//     const [weather, setWeather] = useState(null);
-//     const [error, setError] = useState('');
-//     const [unit, setUnit] = useState(() => localStorage.getItem('unit') || 'C'); // 🌡️
-//
-//     const getWeather = async (searchCity,days) => {
-//         try {
-//             setError('');
-//             const data = await fetchWeather(searchCity,days);
-//             setCity(searchCity);
-//             setWeather(data);
-//             localStorage.setItem('lastCity', searchCity);
-//         } catch (err) {
-//             setError('City not found');
-//         }
-//     };
-//     const toggleUnit = () => {
-//         const newUnit = unit === 'C' ? 'F' : 'C';
-//         setUnit(newUnit);
-//         localStorage.setItem('unit', newUnit);
-//     };
-//     useEffect(() => {
-//         getWeather(city,4); // Fetch when app loads
-//     }, []);
-//
-//     return (
-//         <WeatherContext.Provider value={{ city, weather, error, getWeather,unit,toggleUnit }}>
-//             {children}
-//         </WeatherContext.Provider>
-//     );
-// };
-//
-// export const useWeather = () => useContext(WeatherContext);
+
 
 import React, { createContext, useContext, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchWeather } from '../api/fetchWeather';
+import {toast} from "sonner";
 
 const WeatherContext = createContext();
 
@@ -68,9 +29,23 @@ export const WeatherProvider = ({ children }) => {
         isError,
         error,
         refetch,
+        isFetching,
     } = useQuery({
         queryKey: ['weather', city, days],
-        queryFn: () => fetchWeather(city, days),
+        queryFn: () => {
+            toast.loading('Getting Weather...');
+            return fetchWeather(city, days)
+                .then((data) => {
+                    toast.dismiss(); // remove loading
+                    toast.success('Weather fetched!');
+                    return data;
+                })
+                .catch((err) => {
+                    toast.dismiss(); // remove loading
+                    toast.error('Error fetching weather!');
+                    throw err;
+                });
+        },
         enabled: !!city && !!days,
         staleTime: 30000,
         refetchInterval: 30000,
@@ -86,6 +61,7 @@ export const WeatherProvider = ({ children }) => {
                 isLoading,
                 isError,
                 error,
+                isFetching,
                 refetch,
                 unit,
                 toggleUnit,

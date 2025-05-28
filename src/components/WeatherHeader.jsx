@@ -1,4 +1,4 @@
-import {  ChevronDown,LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import {useWeather} from "../context/WeatherContext.jsx";
 import SearchBar from "./SearchBar.jsx";
 import React, {useState} from "react";
@@ -65,7 +65,7 @@ export function WeatherHeader() {
                                 <div className="absolute right-0 mt-2 w-32 bg-white text-gray-700 rounded shadow z-20">
                                     <button
                                         onClick={handleLogout}
-                                        className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100"
+                                        className="flex items-center w-full px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
                                     >
                                         <LogOut className="w-4 h-4 mr-2" /> Logout
                                     </button>
