@@ -8,7 +8,7 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from '../components/ui/card';
+} from '../components/ui/Card.jsx';
 import {supabase} from "../lib/supabaseClient.js";
 import {useNavigate} from "react-router-dom";
 import {toast} from "sonner";
