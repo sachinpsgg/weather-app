@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Check } from 'lucide-react';
-import { Button } from '../components/ui/button';
+
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
 import {
@@ -15,6 +15,7 @@ import { Checkbox } from '../components/ui/checkbox';
 import {supabase} from "../lib/supabaseClient.js";
 import {toast} from "sonner";
 import {useNavigate} from "react-router-dom";
+import {Button} from "../components/ui/Button.jsx";
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
@@ -246,8 +247,6 @@ export default function SignUp() {
                                 </button>
                             </Label>
                         </div>
-
-                        {/* Submit */}
                         <Button
                             type="submit"
                             disabled={!isFormValid}
