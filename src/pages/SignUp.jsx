@@ -28,7 +28,6 @@ export default function SignUp() {
         email: '',
         password: '',
         confirmPassword: '',
-        agreeToTerms: false,
     });
 
     const handleInputChange = (e) => {
@@ -73,7 +72,6 @@ export default function SignUp() {
         formData.email &&
         formData.password &&
         formData.password === formData.confirmPassword &&
-        formData.agreeToTerms &&
         passwordRequirements.every((req) => req.met);
 
     return (
@@ -235,19 +233,19 @@ export default function SignUp() {
                                 }
                                 className="border-white/20 data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500 mt-1"
                             />
-                            <Label
-                                htmlFor="agreeToTerms"
-                                className="text-sm text-blue-200 leading-relaxed"
-                            >
-                                I agree to the{' '}
-                                <button className="text-blue-300 hover:text-white underline">
-                                    Terms of Service
-                                </button>{' '}
-                                and{' '}
-                                <button className="text-blue-300 hover:text-white underline">
-                                    Privacy Policy
-                                </button>
-                            </Label>
+                            {/*<Label*/}
+                            {/*    htmlFor="agreeToTerms"*/}
+                            {/*    className="text-sm text-blue-200 leading-relaxed"*/}
+                            {/*>*/}
+                            {/*    I agree to the{' '}*/}
+                            {/*    <button className="text-blue-300 hover:text-white underline">*/}
+                            {/*        Terms of Service*/}
+                            {/*    </button>{' '}*/}
+                            {/*    and{' '}*/}
+                            {/*    <button className="text-blue-300 hover:text-white underline">*/}
+                            {/*        Privacy Policy*/}
+                            {/*    </button>*/}
+                            {/*</Label>*/}
                         </div>
                         <Button
                             type="submit"
