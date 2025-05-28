@@ -43,8 +43,6 @@ export const WeatherProvider = ({ children }) => {
                     }
                 );
             } else {
-                setCity('New Delhi');
-                localStorage.setItem('lastCity', 'New Delhi');
                 setInitFetchDone(true);
             }
         }

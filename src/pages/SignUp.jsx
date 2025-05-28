@@ -46,15 +46,17 @@ export default function SignUp() {
                 email: formData.email,
                 password: formData.password,
                 options: {
-                    data: { full_name: formData.name }, // optional: custom user metadata
+                    data: { full_name: formData.name },
                 },
             });
 
             if (error) {
                 toast.error(`Sign-up failed: ${error.message}`, { id: loadingToastId });
             } else {
-                toast.success("Account created successfully! Login Now", { id: loadingToastId });
-                navigate("/login");
+                toast.success("Account created successfully!", { id: loadingToastId });
+                localStorage.setItem("unit","C");
+                localStorage.setItem("username",formData.name.charAt(0).toUpperCase());
+                navigate("/dashboard");
             }
         } catch (err) {
             toast.error("Something went wrong during sign-up.", { id: loadingToastId });
@@ -233,19 +235,6 @@ export default function SignUp() {
                                 }
                                 className="border-white/20 data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500 mt-1"
                             />
-                            {/*<Label*/}
-                            {/*    htmlFor="agreeToTerms"*/}
-                            {/*    className="text-sm text-blue-200 leading-relaxed"*/}
-                            {/*>*/}
-                            {/*    I agree to the{' '}*/}
-                            {/*    <button className="text-blue-300 hover:text-white underline">*/}
-                            {/*        Terms of Service*/}
-                            {/*    </button>{' '}*/}
-                            {/*    and{' '}*/}
-                            {/*    <button className="text-blue-300 hover:text-white underline">*/}
-                            {/*        Privacy Policy*/}
-                            {/*    </button>*/}
-                            {/*</Label>*/}
                         </div>
                         <Button
                             type="submit"
