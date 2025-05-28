@@ -1,37 +1,25 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import CurrentWeather from '../components/CurrentWeather';
 import DailyForecast from '../components/DailyForecast';
 import { useWeather } from '../context/WeatherContext';
 import {WeatherHeader} from "../components/WeatherHeader.jsx";
-import Error from "../components/Error.jsx";
 import {Loader2} from "lucide-react";
 
 const Dashboard = () => {
-    const { error, getWeather,city,isFetching} = useWeather();
+    const { isFetching, isError, weather } = useWeather();
 
-    useEffect(() => {
-        if (!city) {
-            const lastCity = localStorage.getItem('lastCity');
-            if (lastCity) {
-                getWeather(lastCity);
-            } else if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const coords = `${position.coords.latitude},${position.coords.longitude}`;
-                        getWeather(coords);
-                    },
-                    () => getWeather('New Delhi')
-                );
-            } else {
-                getWeather('New Delhi');
-            }
-        }
-    }, [city]);
+    if (isError || !weather) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 p-6 text-white text-xl">
+                <WeatherHeader/>
+                Unable to fetch weather data. Please check the city name.
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 p-6">
             <WeatherHeader userName="Hi" />
-            {error && <Error message={error} />}
             {isFetching ? (
                 <div className="flex flex-col items-center justify-center py-20">
                     <Loader2 className="animate-spin h-10 w-10 text-white mb-4" />
@@ -46,4 +34,4 @@ const Dashboard = () => {
         </div>
     );
 };
-export default Dashboard
+export default Dashboard;

@@ -43,6 +43,7 @@ export default function Login() {
             setLoading(false)
         } else {
             localStorage.setItem("username",data.user.user_metadata.full_name);
+            localStorage.setItem("unit","C");
             toast.success("Welcome back!", { id: loadingToast });
             setLoading(false)
             navigate('/dashboard');
