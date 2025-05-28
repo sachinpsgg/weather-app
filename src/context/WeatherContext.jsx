@@ -79,7 +79,7 @@ export const WeatherProvider = ({ children }) => {
                 return data;
             } catch (err) {
                 toast.dismiss();
-                toast.error('Invalid city name. Showing previous valid city’s data.');
+                toast.error('Invalid city name.');
                 throw err;
             }
         },
