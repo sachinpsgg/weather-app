@@ -1,9 +1,6 @@
 
 import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
 import {
     Card,
     CardContent,
@@ -15,6 +12,9 @@ import {
 import {supabase} from "../lib/supabaseClient.js";
 import {useNavigate} from "react-router-dom";
 import {toast} from "sonner";
+import {Label} from "recharts";
+import {Input} from "../components/ui/Input.jsx";
+import {Button} from "../components/ui/Button.jsx";
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);

@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Check } from 'lucide-react';
 
-import { Input } from '../components/ui/input';
-import { Label } from '../components/ui/label';
 import {
     Card,
     CardContent,
@@ -11,11 +9,15 @@ import {
     CardHeader,
     CardTitle,
 } from '../components/ui/card';
-import { Checkbox } from '../components/ui/checkbox';
+
 import {supabase} from "../lib/supabaseClient.js";
 import {toast} from "sonner";
 import {useNavigate} from "react-router-dom";
+import {Label} from "recharts";
+import {Input} from "../components/ui/Input.jsx";
+import {Checkbox} from "@radix-ui/react-checkbox";
 import {Button} from "../components/ui/Button.jsx";
+
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
@@ -41,7 +43,7 @@ export default function SignUp() {
         e.preventDefault();
         const loadingToastId = toast.loading("Creating account...");
         try {
-            const { user, error } = await supabase.auth.signUp({
+            const {  error } = await supabase.auth.signUp({
                 email: formData.email,
                 password: formData.password,
                 options: {

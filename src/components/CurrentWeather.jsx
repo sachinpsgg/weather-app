@@ -1,9 +1,9 @@
 import {useWeather} from "../context/WeatherContext.jsx";
 import {Card} from "./ui/Card.jsx";
-import {Wind, Droplets, Sunrise, Sunset, Moon, SunMoon, LocationEditIcon} from 'lucide-react'
+import {Wind, Droplets, Sunrise, Sunset, Moon, SunMoon} from 'lucide-react'
 import DaysSelector from "./DaysSelector.jsx";
 export default function CurrentWeather({ weather }) {
-    const { unit ,days,setDays,getWeather} = useWeather();
+    const { unit ,days,setDays} = useWeather();
     const temperature = unit === 'C' ? weather.current.temp_c : weather.current.temp_f;
 
     const currentTime = new Date();
