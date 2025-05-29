@@ -28,17 +28,17 @@ export default function CurrentWeather() {
                 <div className="relative z-10">
                     <div className="flex justify-between items-start mb-8">
                         <div>
-                            <h1 className="text-6xl font-light mb-2">
+                            <h1 className="text-3xl font-light mb-2">
                                 {weather.location.name},{weather.location.region},{weather.location.country}
                             </h1>
-                            <h2 className="text-6xl font-light mb-2">{timeString}</h2>
+                            <h2 className="text-3xl font-light mb-2">{timeString}</h2>
                             <p className="text-blue-100 text-lg">{dateString}</p>
                         </div>
                         <img src={`https:${weather.current.condition.icon}`} alt="icon"/>
                     </div>
 
                     <div className="mt-8">
-                        <h3 className="text-lg font-medium mb-2">Weather Forecast</h3>
+                        <h3 className="text-md font-medium mb-2">Weather Forecast</h3>
                         <h4 className="text-2xl font-semibold mb-2">{weather.current.condition.text}</h4>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-blue-100 bg-white/10 p-4 rounded-lg mt-4">

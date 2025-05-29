@@ -17,8 +17,7 @@ export default function DailyForecast() {
                 {weather.forecast.forecastday.map((day) => (
                     <div
                         key={day.date}
-                        className="flex items-center justify-between p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/15 transition-colors"
-                    >
+                        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/15 transition-colors">
                         <div className="flex items-center gap-3">
                             <img src={`https:${day.day.condition.icon}`} alt="icon"/>
                             <div>
