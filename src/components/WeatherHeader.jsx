@@ -20,6 +20,7 @@ export function WeatherHeader() {
         return 'Good Evening';
     };
     const handleLogout = async () => {
+        localStorage.clear();
         await supabase.auth.signOut();
         navigate('/login');
     };
